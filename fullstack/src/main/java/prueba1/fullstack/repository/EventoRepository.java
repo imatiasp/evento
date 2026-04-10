@@ -2,7 +2,6 @@ package prueba1.fullstack.repository;
 
 import org.springframework.stereotype.Repository;
 import prueba1.fullstack.model.Evento;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +13,7 @@ public class EventoRepository {
     private Long contadorId = 1L;
 
     //Metodo que retorna todos los eventos
-    public List<Evento> getlistaEventos() {
+    public List<Evento> obtenerTodos() {
         return listaEventos;
     }
 
@@ -26,6 +25,7 @@ public class EventoRepository {
         return evento;
     }
 
+    //Metodo para buscar un evento por id
     public Evento buscarPorId(Long id){
         for (Evento e : listaEventos) {
             if (e.getId().equals(id)) {
@@ -35,6 +35,7 @@ public class EventoRepository {
         return null;
     }
 
+    //Metodo para eliminar un evento por id
     public boolean eliminar(Long id){
         for (int i = 0; i < listaEventos.size(); i++) {
             if (listaEventos.get(i).getId().equals(id)){

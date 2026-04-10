@@ -1,11 +1,9 @@
 package prueba1.fullstack.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import prueba1.fullstack.model.Evento;
 import prueba1.fullstack.repository.EventoRepository;
-
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -28,7 +26,7 @@ public class EventoService {
     }
 
     public Evento obtenerEvento(Long id) {
-        return repo.buscarPorId(id);
+        Evento evento = repo.buscarPorId(id);
 
         if (evento == null) {
             throw new RuntimeException("Evento no encontrado");
@@ -40,8 +38,8 @@ public class EventoService {
         Evento evento = obtenerEvento(id);
 
         evento.setNombre(nuevo.getNombre());
-        evento.setTipo(nuevo.getTipo()):
-        evento.setFecha(nuevo.getFecha()):
+        evento.setTipo(nuevo.getTipo());
+        evento.setFecha(nuevo.getFecha());
         evento.setUbicacion(nuevo.getUbicacion());
         evento.setCapacidad(nuevo.getCapacidad());
         return evento;
@@ -55,6 +53,7 @@ public class EventoService {
     }
 
     public List<Evento> ordenarPorFecha(){
+
         List<Evento> lista = repo.obtenerTodos();
 
         Collections.sort(lista, new Comparator<Evento>() {
@@ -64,5 +63,5 @@ public class EventoService {
             }
         });
         return lista;
-            }
+    }
 }

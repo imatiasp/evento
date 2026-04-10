@@ -4,8 +4,7 @@ package prueba1.fullstack.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import prueba1.fullstack.model.Evento;
-import prueba1.fullstack.repository.EventoRepository;
-
+import prueba1.fullstack.service.EventoService;
 import java.util.List;
 
 @RestController
@@ -13,7 +12,7 @@ import java.util.List;
 public class EventoController {
 
     @Autowired
-    private EventoRepository service;
+    private EventoService service;
 
     @GetMapping
     public List<Evento> listar() {
