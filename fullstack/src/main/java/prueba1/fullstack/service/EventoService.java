@@ -29,7 +29,7 @@ public class EventoService {
         Evento evento = repo.buscarPorId(id);
 
         if (evento == null) {
-            throw new RuntimeException("Evento no encontrado");
+            throw new RuntimeException("Evento con ID" + id + "no encontrado");
         }
         return evento;
     }
