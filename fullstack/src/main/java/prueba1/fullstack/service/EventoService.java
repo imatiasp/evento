@@ -18,22 +18,38 @@ public class EventoService {
         return repo.obtenerTodos();
     }
 
+    //Metodo para crear un evento
     public Evento crearEvento(Evento evento) {
         if (evento.getNombre() == null || evento.getNombre().isEmpty()) {
             throw new RuntimeException("El nombre es obligatorio");
         }
+        if (evento.getTipo() == null || evento.getTipo().isEmpty()) {
+            throw new RuntimeException("El tipo es obligatorio");
+        }
+        if (evento.getFecha() == null || evento.getFecha().isEmpty()) {
+            throw new RuntimeException("La fecha es obligatoria");
+        }
+        if (evento.getUbicacion() == null || evento.getUbicacion().isEmpty()) {
+            throw new RuntimeException("La ubicacion es obligatoria");
+        }
+        if (evento.getTipo() == null || evento.getTipo().isEmpty()) {
+            throw new RuntimeException("La tipo es obligatorio");
+        }
         return repo.guardar(evento);
     }
 
+    //Metodo para mostrar un evento por id
     public Evento obtenerEvento(Long id) {
         Evento evento = repo.buscarPorId(id);
 
+        //Contencion de error
         if (evento == null) {
-            throw new RuntimeException("Evento con ID" + id + "no encontrado");
+            throw new RuntimeException("Evento con ID " + id + " no fue encontrado");
         }
         return evento;
     }
 
+    //Metodo para modificar un evento
     public Evento actualizarEvento(Long id, Evento nuevo){
         Evento evento = obtenerEvento(id);
 
@@ -45,6 +61,7 @@ public class EventoService {
         return evento;
     }
 
+    //Metodo para eliminar un evento por id
     public void eliminarEvento(Long id) {
         boolean eliminado = repo.eliminar(id);
         if (!eliminado) {
@@ -52,6 +69,7 @@ public class EventoService {
         }
     }
 
+    //Metodo para ordenar por fecha los elementos
     public List<Evento> ordenarPorFecha(){
 
         List<Evento> lista = repo.obtenerTodos();

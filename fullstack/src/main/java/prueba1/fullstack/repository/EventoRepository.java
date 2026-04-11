@@ -8,16 +8,15 @@ import java.util.List;
 @Repository
 public class EventoRepository {
 
-    //Arreglo que guardara todos los eventos
     private List<Evento> listaEventos = new ArrayList<>();
     private Long contadorId = 1L;
 
-    //Metodo que retorna todos los eventos
+    //Metodo que muestra todos los eventos guardados
     public List<Evento> obtenerTodos() {
         return listaEventos;
     }
 
-    //Metodo para guardar eventos
+    //Metodo que guarda un evento
     public Evento guardar(Evento evento){
         evento.setId(contadorId);
         contadorId++;
@@ -25,7 +24,7 @@ public class EventoRepository {
         return evento;
     }
 
-    //Metodo para buscar un evento por id
+    //Metodo que busca por id
     public Evento buscarPorId(Long id){
         for (Evento e : listaEventos) {
             if (e.getId().equals(id)) {
@@ -35,7 +34,7 @@ public class EventoRepository {
         return null;
     }
 
-    //Metodo para eliminar un evento por id
+    //Metodo que elimina un evento por id
     public boolean eliminar(Long id){
         for (int i = 0; i < listaEventos.size(); i++) {
             if (listaEventos.get(i).getId().equals(id)){
